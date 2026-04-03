@@ -1,0 +1,26 @@
+[
+{
+  "directory": "E:/desktop/Breakout/build",
+  "command": "E:\\software\\MSYS2\\ucrt64\\bin\\g++.exe  @CMakeFiles/breakout_week2.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\breakout_week2.dir\\src\\main.cpp.obj -c E:\\desktop\\Breakout\\src\\main.cpp",
+  "file": "E:/desktop/Breakout/src/main.cpp",
+  "output": "CMakeFiles/breakout_week2.dir/src/main.cpp.obj"
+},
+{
+  "directory": "E:/desktop/Breakout/build",
+  "command": "E:\\software\\MSYS2\\ucrt64\\bin\\g++.exe  @CMakeFiles/breakout_week2.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\breakout_week2.dir\\src\\Ball.cpp.obj -c E:\\desktop\\Breakout\\src\\Ball.cpp",
+  "file": "E:/desktop/Breakout/src/Ball.cpp",
+  "output": "CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj"
+},
+{
+  "directory": "E:/desktop/Breakout/build",
+  "command": "E:\\software\\MSYS2\\ucrt64\\bin\\g++.exe  @CMakeFiles/breakout_week2.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\breakout_week2.dir\\src\\Paddle.cpp.obj -c E:\\desktop\\Breakout\\src\\Paddle.cpp",
+  "file": "E:/desktop/Breakout/src/Paddle.cpp",
+  "output": "CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj"
+},
+{
+  "directory": "E:/desktop/Breakout/build",
+  "command": "E:\\software\\MSYS2\\ucrt64\\bin\\g++.exe  @CMakeFiles/breakout_week2.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\breakout_week2.dir\\src\\Brick.cpp.obj -c E:\\desktop\\Breakout\\src\\Brick.cpp",
+  "file": "E:/desktop/Breakout/src/Brick.cpp",
+  "output": "CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj"
+}
+]
