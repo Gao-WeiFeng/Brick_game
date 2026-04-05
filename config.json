@@ -1,0 +1,22 @@
+{
+    "window": {
+        "width": 800,
+        "height": 600,
+        "title": "Breakout Enhanced"
+    },
+    "ball": {
+        "radius": 10,
+        "gravity": 0.08,
+        "maxSpeed": 15,
+        "bounceForce": 0.5
+    },
+    "paddle": {
+        "width": 120,
+        "height": 15,
+        "speed": 6
+    },
+    "game": {
+        "initialLives": 3,
+        "scorePerBrick": 10
+    }
+}

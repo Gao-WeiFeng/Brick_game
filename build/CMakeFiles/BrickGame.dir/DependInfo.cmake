@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "E:/Brick_game/src/Ball.cpp" "CMakeFiles/BrickGame.dir/src/Ball.cpp.obj" "gcc" "CMakeFiles/BrickGame.dir/src/Ball.cpp.obj.d"
   "E:/Brick_game/src/Brick.cpp" "CMakeFiles/BrickGame.dir/src/Brick.cpp.obj" "gcc" "CMakeFiles/BrickGame.dir/src/Brick.cpp.obj.d"
+  "E:/Brick_game/src/Game.cpp" "CMakeFiles/BrickGame.dir/src/Game.cpp.obj" "gcc" "CMakeFiles/BrickGame.dir/src/Game.cpp.obj.d"
   "E:/Brick_game/src/Paddle.cpp" "CMakeFiles/BrickGame.dir/src/Paddle.cpp.obj" "gcc" "CMakeFiles/BrickGame.dir/src/Paddle.cpp.obj.d"
   "E:/Brick_game/src/main.cpp" "CMakeFiles/BrickGame.dir/src/main.cpp.obj" "gcc" "CMakeFiles/BrickGame.dir/src/main.cpp.obj.d"
   )

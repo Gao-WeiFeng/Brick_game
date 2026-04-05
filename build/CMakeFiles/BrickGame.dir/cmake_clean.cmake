@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/BrickGame.dir/src/Ball.cpp.obj.d"
   "CMakeFiles/BrickGame.dir/src/Brick.cpp.obj"
   "CMakeFiles/BrickGame.dir/src/Brick.cpp.obj.d"
+  "CMakeFiles/BrickGame.dir/src/Game.cpp.obj"
+  "CMakeFiles/BrickGame.dir/src/Game.cpp.obj.d"
   "CMakeFiles/BrickGame.dir/src/Paddle.cpp.obj"
   "CMakeFiles/BrickGame.dir/src/Paddle.cpp.obj.d"
   "CMakeFiles/BrickGame.dir/src/main.cpp.obj"

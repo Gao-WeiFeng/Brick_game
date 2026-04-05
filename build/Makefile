@@ -195,6 +195,30 @@ src/Brick.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Brick.cpp.s
 .PHONY : src/Brick.cpp.s
 
+src/Game.obj: src/Game.cpp.obj
+.PHONY : src/Game.obj
+
+# target to build an object file
+src/Game.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Game.cpp.obj
+.PHONY : src/Game.cpp.obj
+
+src/Game.i: src/Game.cpp.i
+.PHONY : src/Game.i
+
+# target to preprocess a source file
+src/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Game.cpp.i
+.PHONY : src/Game.cpp.i
+
+src/Game.s: src/Game.cpp.s
+.PHONY : src/Game.s
+
+# target to generate assembly for a file
+src/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Game.cpp.s
+.PHONY : src/Game.cpp.s
+
 src/Paddle.obj: src/Paddle.cpp.obj
 .PHONY : src/Paddle.obj
 
@@ -286,6 +310,9 @@ help:
 	@echo ... src/Brick.obj
 	@echo ... src/Brick.i
 	@echo ... src/Brick.s
+	@echo ... src/Game.obj
+	@echo ... src/Game.i
+	@echo ... src/Game.s
 	@echo ... src/Paddle.obj
 	@echo ... src/Paddle.i
 	@echo ... src/Paddle.s
