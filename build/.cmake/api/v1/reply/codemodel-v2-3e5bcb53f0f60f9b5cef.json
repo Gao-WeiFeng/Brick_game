@@ -16,7 +16,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -28,10 +29,11 @@
 					[
 						0
 					],
-					"name" : "breakout_week2",
+					"name" : "BrickGame",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,9 +41,16 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "breakout_week2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-breakout_week2-Debug-6df04e6641a416312119.json",
-					"name" : "breakout_week2",
+					"id" : "BrickGame::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BrickGame-Debug-e8d7999b1af9e381dca8.json",
+					"name" : "BrickGame",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test-Debug-5793ebbaa80806f51a6f.json",
+					"name" : "test",
 					"projectIndex" : 0
 				}
 			]

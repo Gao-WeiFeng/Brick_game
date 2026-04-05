@@ -2,6 +2,42 @@
 	"entries" : 
 	[
 		{
+			"name" : "BrickGame_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "E:/Brick_game/build"
+		},
+		{
+			"name" : "BrickGame_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "BrickGame_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "E:/Brick_game"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
@@ -915,7 +951,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "breakout_week2"
+			"value" : "BrickGame"
 		},
 		{
 			"name" : "CMAKE_PROJECT_SPDX_LICENSE",

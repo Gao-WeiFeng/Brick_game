@@ -1,3 +1,4 @@
-E:/Brick_game/build/CMakeFiles/breakout_week2.dir
+E:/Brick_game/build/CMakeFiles/BrickGame.dir
+E:/Brick_game/build/CMakeFiles/test.dir
 E:/Brick_game/build/CMakeFiles/edit_cache.dir
 E:/Brick_game/build/CMakeFiles/rebuild_cache.dir

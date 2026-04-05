@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "breakout_week2.exe"
+			"path" : "BrickGame.exe"
 		},
 		{
-			"path" : "breakout_week2.pdb"
+			"path" : "BrickGame.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -42,7 +42,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 25,
+				"line" : 24,
 				"parent" : 0
 			},
 			{
@@ -92,7 +92,7 @@
 			]
 		}
 	],
-	"id" : "breakout_week2::@6890427a1f51a3e7e1df",
+	"id" : "BrickGame::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -152,8 +152,8 @@
 			"fragment" : "opengl32"
 		}
 	],
-	"name" : "breakout_week2",
-	"nameOnDisk" : "breakout_week2.exe",
+	"name" : "BrickGame",
+	"nameOnDisk" : "BrickGame.exe",
 	"paths" : 
 	{
 		"build" : ".",
