@@ -1,5 +1,5 @@
 CMakeFiles/breakout_week2.dir/src/main.cpp.obj: \
- E:\desktop\Breakout\src\main.cpp E:/software/raylib/include/raylib.h \
+ E:\Brick_game\src\main.cpp E:/software/raylib/include/raylib.h \
  E:/software/MSYS2/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
  E:/software/MSYS2/ucrt64/include/stdarg.h \
  E:/software/MSYS2/ucrt64/include/_mingw_stdarg.h \
@@ -8,8 +8,8 @@ CMakeFiles/breakout_week2.dir/src/main.cpp.obj: \
  E:/software/MSYS2/ucrt64/include/_mingw_mac.h \
  E:/software/MSYS2/ucrt64/include/_mingw_secapi.h \
  E:/software/MSYS2/ucrt64/include/sdks/_mingw_ddk.h \
- E:\desktop\Breakout\src\Ball.h E:\desktop\Breakout\src\Paddle.h \
- E:\desktop\Breakout\src\Brick.h \
+ E:\Brick_game\src\Ball.h E:\Brick_game\src\Paddle.h \
+ E:\Brick_game\src\Brick.h \
  E:/software/MSYS2/ucrt64/include/c++/15.2.0/vector \
  E:/software/MSYS2/ucrt64/include/c++/15.2.0/bits/requires_hosted.h \
  E:/software/MSYS2/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \

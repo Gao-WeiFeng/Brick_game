@@ -52,10 +52,10 @@ RM = E:\software\Cmake\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\desktop\Breakout
+CMAKE_SOURCE_DIR = E:\Brick_game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\desktop\Breakout\build
+CMAKE_BINARY_DIR = E:\Brick_game\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/breakout_week2.dir/depend.make
@@ -73,63 +73,63 @@ CMakeFiles/breakout_week2.dir/codegen:
 
 CMakeFiles/breakout_week2.dir/src/main.cpp.obj: CMakeFiles/breakout_week2.dir/flags.make
 CMakeFiles/breakout_week2.dir/src/main.cpp.obj: CMakeFiles/breakout_week2.dir/includes_CXX.rsp
-CMakeFiles/breakout_week2.dir/src/main.cpp.obj: E:/desktop/Breakout/src/main.cpp
+CMakeFiles/breakout_week2.dir/src/main.cpp.obj: E:/Brick_game/src/main.cpp
 CMakeFiles/breakout_week2.dir/src/main.cpp.obj: CMakeFiles/breakout_week2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\desktop\Breakout\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/breakout_week2.dir/src/main.cpp.obj"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/main.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\main.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\main.cpp.obj -c E:\desktop\Breakout\src\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Brick_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/breakout_week2.dir/src/main.cpp.obj"
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/main.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\main.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\main.cpp.obj -c E:\Brick_game\src\main.cpp
 
 CMakeFiles/breakout_week2.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/breakout_week2.dir/src/main.cpp.i"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\desktop\Breakout\src\main.cpp > CMakeFiles\breakout_week2.dir\src\main.cpp.i
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Brick_game\src\main.cpp > CMakeFiles\breakout_week2.dir\src\main.cpp.i
 
 CMakeFiles/breakout_week2.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/breakout_week2.dir/src/main.cpp.s"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\desktop\Breakout\src\main.cpp -o CMakeFiles\breakout_week2.dir\src\main.cpp.s
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Brick_game\src\main.cpp -o CMakeFiles\breakout_week2.dir\src\main.cpp.s
 
 CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj: CMakeFiles/breakout_week2.dir/flags.make
 CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj: CMakeFiles/breakout_week2.dir/includes_CXX.rsp
-CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj: E:/desktop/Breakout/src/Ball.cpp
+CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj: E:/Brick_game/src/Ball.cpp
 CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj: CMakeFiles/breakout_week2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\desktop\Breakout\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\Ball.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\Ball.cpp.obj -c E:\desktop\Breakout\src\Ball.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Brick_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj"
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\Ball.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\Ball.cpp.obj -c E:\Brick_game\src\Ball.cpp
 
 CMakeFiles/breakout_week2.dir/src/Ball.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/breakout_week2.dir/src/Ball.cpp.i"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\desktop\Breakout\src\Ball.cpp > CMakeFiles\breakout_week2.dir\src\Ball.cpp.i
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Brick_game\src\Ball.cpp > CMakeFiles\breakout_week2.dir\src\Ball.cpp.i
 
 CMakeFiles/breakout_week2.dir/src/Ball.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/breakout_week2.dir/src/Ball.cpp.s"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\desktop\Breakout\src\Ball.cpp -o CMakeFiles\breakout_week2.dir\src\Ball.cpp.s
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Brick_game\src\Ball.cpp -o CMakeFiles\breakout_week2.dir\src\Ball.cpp.s
 
 CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj: CMakeFiles/breakout_week2.dir/flags.make
 CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj: CMakeFiles/breakout_week2.dir/includes_CXX.rsp
-CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj: E:/desktop/Breakout/src/Paddle.cpp
+CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj: E:/Brick_game/src/Paddle.cpp
 CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj: CMakeFiles/breakout_week2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\desktop\Breakout\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\Paddle.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\Paddle.cpp.obj -c E:\desktop\Breakout\src\Paddle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Brick_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj"
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\Paddle.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\Paddle.cpp.obj -c E:\Brick_game\src\Paddle.cpp
 
 CMakeFiles/breakout_week2.dir/src/Paddle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/breakout_week2.dir/src/Paddle.cpp.i"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\desktop\Breakout\src\Paddle.cpp > CMakeFiles\breakout_week2.dir\src\Paddle.cpp.i
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Brick_game\src\Paddle.cpp > CMakeFiles\breakout_week2.dir\src\Paddle.cpp.i
 
 CMakeFiles/breakout_week2.dir/src/Paddle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/breakout_week2.dir/src/Paddle.cpp.s"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\desktop\Breakout\src\Paddle.cpp -o CMakeFiles\breakout_week2.dir\src\Paddle.cpp.s
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Brick_game\src\Paddle.cpp -o CMakeFiles\breakout_week2.dir\src\Paddle.cpp.s
 
 CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj: CMakeFiles/breakout_week2.dir/flags.make
 CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj: CMakeFiles/breakout_week2.dir/includes_CXX.rsp
-CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj: E:/desktop/Breakout/src/Brick.cpp
+CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj: E:/Brick_game/src/Brick.cpp
 CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj: CMakeFiles/breakout_week2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\desktop\Breakout\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\Brick.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\Brick.cpp.obj -c E:\desktop\Breakout\src\Brick.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\Brick_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj"
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj -MF CMakeFiles\breakout_week2.dir\src\Brick.cpp.obj.d -o CMakeFiles\breakout_week2.dir\src\Brick.cpp.obj -c E:\Brick_game\src\Brick.cpp
 
 CMakeFiles/breakout_week2.dir/src/Brick.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/breakout_week2.dir/src/Brick.cpp.i"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\desktop\Breakout\src\Brick.cpp > CMakeFiles\breakout_week2.dir\src\Brick.cpp.i
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\Brick_game\src\Brick.cpp > CMakeFiles\breakout_week2.dir\src\Brick.cpp.i
 
 CMakeFiles/breakout_week2.dir/src/Brick.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/breakout_week2.dir/src/Brick.cpp.s"
-	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\desktop\Breakout\src\Brick.cpp -o CMakeFiles\breakout_week2.dir\src\Brick.cpp.s
+	E:\software\MSYS2\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\Brick_game\src\Brick.cpp -o CMakeFiles\breakout_week2.dir\src\Brick.cpp.s
 
 # Object files for target breakout_week2
 breakout_week2_OBJECTS = \
@@ -149,7 +149,7 @@ breakout_week2.exe: CMakeFiles/breakout_week2.dir/build.make
 breakout_week2.exe: CMakeFiles/breakout_week2.dir/linkLibs.rsp
 breakout_week2.exe: CMakeFiles/breakout_week2.dir/objects1.rsp
 breakout_week2.exe: CMakeFiles/breakout_week2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\desktop\Breakout\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable breakout_week2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\Brick_game\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable breakout_week2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\breakout_week2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -161,6 +161,6 @@ CMakeFiles/breakout_week2.dir/clean:
 .PHONY : CMakeFiles/breakout_week2.dir/clean
 
 CMakeFiles/breakout_week2.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\desktop\Breakout E:\desktop\Breakout E:\desktop\Breakout\build E:\desktop\Breakout\build E:\desktop\Breakout\build\CMakeFiles\breakout_week2.dir\DependInfo.cmake "--color=$(COLOR)" breakout_week2
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\Brick_game E:\Brick_game E:\Brick_game\build E:\Brick_game\build E:\Brick_game\build\CMakeFiles\breakout_week2.dir\DependInfo.cmake "--color=$(COLOR)" breakout_week2
 .PHONY : CMakeFiles/breakout_week2.dir/depend
 

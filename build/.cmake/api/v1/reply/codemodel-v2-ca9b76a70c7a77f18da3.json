@@ -50,8 +50,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/desktop/Breakout/build",
-		"source" : "E:/desktop/Breakout"
+		"build" : "E:/Brick_game/build",
+		"source" : "E:/Brick_game"
 	},
 	"version" : 
 	{

@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "E:/desktop/Breakout/src/Ball.cpp" "CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj.d"
-  "E:/desktop/Breakout/src/Brick.cpp" "CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj.d"
-  "E:/desktop/Breakout/src/Paddle.cpp" "CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj.d"
-  "E:/desktop/Breakout/src/main.cpp" "CMakeFiles/breakout_week2.dir/src/main.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/main.cpp.obj.d"
+  "E:/Brick_game/src/Ball.cpp" "CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj.d"
+  "E:/Brick_game/src/Brick.cpp" "CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj.d"
+  "E:/Brick_game/src/Paddle.cpp" "CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj.d"
+  "E:/Brick_game/src/main.cpp" "CMakeFiles/breakout_week2.dir/src/main.cpp.obj" "gcc" "CMakeFiles/breakout_week2.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

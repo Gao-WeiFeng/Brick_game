@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "e:/desktop/Breakout/build"
+			"value" : "e:/Brick_game/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -587,7 +587,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/desktop/Breakout/build/CMakeFiles/pkgRedirects"
+			"value" : "E:/Brick_game/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/desktop/Breakout"
+			"value" : "E:/Brick_game"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1331,7 +1331,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/desktop/Breakout/build"
+			"value" : "E:/Brick_game/build"
 		},
 		{
 			"name" : "breakout_week2_IS_TOP_LEVEL",
@@ -1355,7 +1355,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/desktop/Breakout"
+			"value" : "E:/Brick_game"
 		}
 	],
 	"kind" : "cache",

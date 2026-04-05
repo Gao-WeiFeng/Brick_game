@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"E:/desktop/Breakout/build/cmake_install.cmake"
+		"E:/Brick_game/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }
