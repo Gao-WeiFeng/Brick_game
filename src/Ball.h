@@ -1,7 +1,6 @@
 #ifndef BALL_H
 #define BALL_H
 #include "raylib.h"
-
 class Ball {
 private:
     Vector2 position;
@@ -16,7 +15,8 @@ private:
 public:
     Ball(Vector2 pos, Vector2 sp, float r);
     
-    void Move();
+    // 加了一个默认参数，原来的调用完全不用改！
+    void Move(float speedFactor = 1.0f);
     void Draw();
     void ApplyGravity();
     void BounceEdge(int screenWidth, int screenHeight);
@@ -34,5 +34,4 @@ public:
     void SetSpeed(Vector2 sp) { speed = sp; }
     bool IsLaunched() { return launched; }
 };
-
 #endif

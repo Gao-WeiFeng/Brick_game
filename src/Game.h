@@ -1,13 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
-
 #include "raylib.h"
 #include "Ball.h"
 #include "Paddle.h"
 #include "Brick.h"
+#include "PowerUp.h"
 #include <vector>
 #include <string>
-
 // 游戏状态枚举，代替原来的一堆bool变量
 enum class GameState {
     MENU,       // 主菜单
@@ -17,14 +16,12 @@ enum class GameState {
     VICTORY,    // 胜利
     LEADERBOARD // 排行榜
 };
-
 // 排行榜条目结构
 struct ScoreEntry {
     char name[32];
     int score;
     time_t timestamp;
 };
-
 // 排行榜类
 class Leaderboard {
 private:
@@ -41,14 +38,21 @@ public:
     int GetCount();
     bool CanEnter(int score);
 };
-
 class Game {
 private:
-    // 游戏核心对象
-    Ball ball;
+    // 游戏核心对象，原来的单个ball改成了多个球的vector
+    std::vector<Ball> balls;
     Paddle paddle;
     std::vector<Brick> bricks;
     Leaderboard leaderboard;
+    
+    // 新加的：道具和粒子
+    std::vector<PowerUp> powerUps;
+    std::vector<Particle> particles;
+    
+    // 减速效果的剩余时间
+    float slowEffectTime;
+    float slowSpeedFactor;
     
     // 游戏状态
     GameState currentState;
@@ -89,14 +93,23 @@ private:
     int initialLives;
     int scorePerBrick;
     float timeMultiplierDecay;
-
+    
+    // 道具的配置，从JSON读取
+    struct PowerUpConfig {
+        float extra_width;
+        float extra_balls;
+        float speed_factor;
+        float duration;
+        float drop_rate;
+    };
+    PowerUpConfig powerup_config[3];
+    
     // 私有辅助方法
     void InitChineseFont();
     void DrawChineseText(const char* text, int x, int y, int fontSize, Color color);
     void DrawChineseTextCentered(const char* text, int y, int fontSize, Color color);
     int CalculateScore(int baseScore);
     void ResetGame();
-
 public:
     // 构造函数
     Game();
@@ -109,6 +122,13 @@ public:
     
     // 加载配置文件（后面会用到）
     void LoadConfig(const std::string& path);
+    
+    // 给效果类用的获取器，方便修改内部状态
+    Paddle& GetPaddle() { return paddle; }
+    std::vector<Ball>& GetBalls() { return balls; }
+    void ActivateSlowEffect(float duration) { slowEffectTime = duration; }
+    float GetSlowFactor() { return slowSpeedFactor; }
+    int GetScreenWidth() { return screenWidth; }
+    int GetScreenHeight() { return screenHeight; }
 };
-
 #endif
