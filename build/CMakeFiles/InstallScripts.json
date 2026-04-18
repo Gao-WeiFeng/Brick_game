@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"E:/Brick_game/build/cmake_install.cmake"
+		"E:/BRICK_GAME/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

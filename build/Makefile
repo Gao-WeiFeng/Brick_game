@@ -56,10 +56,10 @@ RM = E:\software\Cmake\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\Brick_game
+CMAKE_SOURCE_DIR = E:\BRICK_GAME
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\Brick_game\build
+CMAKE_BINARY_DIR = E:\BRICK_GAME\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Brick_game\build\CMakeFiles E:\Brick_game\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\BRICK_GAME\build\CMakeFiles E:\BRICK_GAME\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Brick_game\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\BRICK_GAME\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -116,24 +116,38 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named breakout_week2
+# Target rules for targets named BrickGame
 
 # Build rule for target.
-breakout_week2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 breakout_week2
-.PHONY : breakout_week2
+BrickGame: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 BrickGame
+.PHONY : BrickGame
 
 # fast build rule for target.
-breakout_week2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/build
-.PHONY : breakout_week2/fast
+BrickGame/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/build
+.PHONY : BrickGame/fast
+
+#=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
 
 src/Ball.obj: src/Ball.cpp.obj
 .PHONY : src/Ball.obj
 
 # target to build an object file
 src/Ball.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Ball.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Ball.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Ball.cpp.obj
 .PHONY : src/Ball.cpp.obj
 
 src/Ball.i: src/Ball.cpp.i
@@ -141,7 +155,8 @@ src/Ball.i: src/Ball.cpp.i
 
 # target to preprocess a source file
 src/Ball.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Ball.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Ball.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Ball.cpp.i
 .PHONY : src/Ball.cpp.i
 
 src/Ball.s: src/Ball.cpp.s
@@ -149,7 +164,8 @@ src/Ball.s: src/Ball.cpp.s
 
 # target to generate assembly for a file
 src/Ball.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Ball.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Ball.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Ball.cpp.s
 .PHONY : src/Ball.cpp.s
 
 src/Brick.obj: src/Brick.cpp.obj
@@ -157,7 +173,8 @@ src/Brick.obj: src/Brick.cpp.obj
 
 # target to build an object file
 src/Brick.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Brick.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Brick.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Brick.cpp.obj
 .PHONY : src/Brick.cpp.obj
 
 src/Brick.i: src/Brick.cpp.i
@@ -165,7 +182,8 @@ src/Brick.i: src/Brick.cpp.i
 
 # target to preprocess a source file
 src/Brick.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Brick.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Brick.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Brick.cpp.i
 .PHONY : src/Brick.cpp.i
 
 src/Brick.s: src/Brick.cpp.s
@@ -173,15 +191,41 @@ src/Brick.s: src/Brick.cpp.s
 
 # target to generate assembly for a file
 src/Brick.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Brick.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Brick.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Brick.cpp.s
 .PHONY : src/Brick.cpp.s
+
+src/Game.obj: src/Game.cpp.obj
+.PHONY : src/Game.obj
+
+# target to build an object file
+src/Game.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Game.cpp.obj
+.PHONY : src/Game.cpp.obj
+
+src/Game.i: src/Game.cpp.i
+.PHONY : src/Game.i
+
+# target to preprocess a source file
+src/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Game.cpp.i
+.PHONY : src/Game.cpp.i
+
+src/Game.s: src/Game.cpp.s
+.PHONY : src/Game.s
+
+# target to generate assembly for a file
+src/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Game.cpp.s
+.PHONY : src/Game.cpp.s
 
 src/Paddle.obj: src/Paddle.cpp.obj
 .PHONY : src/Paddle.obj
 
 # target to build an object file
 src/Paddle.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Paddle.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Paddle.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Paddle.cpp.obj
 .PHONY : src/Paddle.cpp.obj
 
 src/Paddle.i: src/Paddle.cpp.i
@@ -189,7 +233,8 @@ src/Paddle.i: src/Paddle.cpp.i
 
 # target to preprocess a source file
 src/Paddle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Paddle.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Paddle.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Paddle.cpp.i
 .PHONY : src/Paddle.cpp.i
 
 src/Paddle.s: src/Paddle.cpp.s
@@ -197,15 +242,40 @@ src/Paddle.s: src/Paddle.cpp.s
 
 # target to generate assembly for a file
 src/Paddle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/Paddle.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/Paddle.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/Paddle.cpp.s
 .PHONY : src/Paddle.cpp.s
+
+src/PowerUp.obj: src/PowerUp.cpp.obj
+.PHONY : src/PowerUp.obj
+
+# target to build an object file
+src/PowerUp.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/PowerUp.cpp.obj
+.PHONY : src/PowerUp.cpp.obj
+
+src/PowerUp.i: src/PowerUp.cpp.i
+.PHONY : src/PowerUp.i
+
+# target to preprocess a source file
+src/PowerUp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/PowerUp.cpp.i
+.PHONY : src/PowerUp.cpp.i
+
+src/PowerUp.s: src/PowerUp.cpp.s
+.PHONY : src/PowerUp.s
+
+# target to generate assembly for a file
+src/PowerUp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/PowerUp.cpp.s
+.PHONY : src/PowerUp.cpp.s
 
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
 # target to build an object file
 src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/main.cpp.obj
 .PHONY : src/main.cpp.obj
 
 src/main.i: src/main.cpp.i
@@ -213,7 +283,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -221,8 +291,32 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\breakout_week2.dir\build.make CMakeFiles/breakout_week2.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BrickGame.dir\build.make CMakeFiles/BrickGame.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/test.obj: src/test.cpp.obj
+.PHONY : src/test.obj
+
+# target to build an object file
+src/test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/test.cpp.obj
+.PHONY : src/test.cpp.obj
+
+src/test.i: src/test.cpp.i
+.PHONY : src/test.i
+
+# target to preprocess a source file
+src/test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/test.cpp.i
+.PHONY : src/test.cpp.i
+
+src/test.s: src/test.cpp.s
+.PHONY : src/test.s
+
+# target to generate assembly for a file
+src/test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/src/test.cpp.s
+.PHONY : src/test.cpp.s
 
 # Help Target
 help:
@@ -232,19 +326,29 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... breakout_week2
+	@echo ... BrickGame
+	@echo ... test
 	@echo ... src/Ball.obj
 	@echo ... src/Ball.i
 	@echo ... src/Ball.s
 	@echo ... src/Brick.obj
 	@echo ... src/Brick.i
 	@echo ... src/Brick.s
+	@echo ... src/Game.obj
+	@echo ... src/Game.i
+	@echo ... src/Game.s
 	@echo ... src/Paddle.obj
 	@echo ... src/Paddle.i
 	@echo ... src/Paddle.s
+	@echo ... src/PowerUp.obj
+	@echo ... src/PowerUp.i
+	@echo ... src/PowerUp.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/test.obj
+	@echo ... src/test.i
+	@echo ... src/test.s
 .PHONY : help
 
 
