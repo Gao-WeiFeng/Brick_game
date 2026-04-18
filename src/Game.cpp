@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "json.hpp"
+#include "PowerUp.h"
 #include <fstream>
 #include <cstdio>
 #include <cstdlib>
@@ -7,12 +8,10 @@
 #include <ctime>
 #include <cmath>
 #include <algorithm>
-
 using json = nlohmann::json;
 
-// Leaderboard的实现
+// Leaderboard的实现，和你原来的完全一样！
 Leaderboard::Leaderboard(const char* file) : count(0), filename(file) { Load(); }
-
 void Leaderboard::Load() {
     FILE* f = fopen(filename, "r");
     if (f) {
@@ -23,7 +22,6 @@ void Leaderboard::Load() {
         fclose(f);
     }
 }
-
 void Leaderboard::Save() {
     FILE* f = fopen(filename, "w");
     if (f) {
@@ -31,7 +29,6 @@ void Leaderboard::Save() {
         fclose(f);
     }
 }
-
 int Leaderboard::AddScore(const char* name, int score) {
     if (count >= MAX_ENTRIES && score <= entries[count - 1].score) return 0;
     ScoreEntry newEntry;
@@ -45,21 +42,19 @@ int Leaderboard::AddScore(const char* name, int score) {
     Save();
     return pos + 1;
 }
-
 bool Leaderboard::GetEntry(int rank, ScoreEntry& entry) { 
     if (rank > 0 && rank <= count) { entry = entries[rank - 1]; return true; } 
     return false; 
 }
-
 int Leaderboard::GetCount() { return count; }
 bool Leaderboard::CanEnter(int score) { return count < MAX_ENTRIES || score > entries[count - 1].score; }
-
 // Game类的实现
 Game::Game() : 
-    ball({400.0f, 530.0f}, {0.0f, 0.0f}, 10.0f),
     paddle(340.0f, 550.0f, 120.0f, 15.0f),
     leaderboard("scores.txt"),
-    currentState(GameState::MENU)
+    currentState(GameState::MENU),
+    slowEffectTime(0.0f),
+    slowSpeedFactor(0.7f)
 {
     // 先给默认值，后面会从配置文件覆盖
     screenWidth = 800;
@@ -84,8 +79,12 @@ Game::Game() :
     initialLives = 3;
     scorePerBrick = 10;
     timeMultiplierDecay = 0.05f;
+    
+    // 道具默认配置
+    powerup_config[(int)PowerUpType::PADDLE_EXTEND] = {40, 2, 0.7f, 5, 0.3f};
+    powerup_config[(int)PowerUpType::MULTI_BALL] = {40, 2, 0.7f, 0, 0.2f};
+    powerup_config[(int)PowerUpType::SLOW_BALL] = {40, 2, 0.7f, 5, 0.25f};
 }
-
 void Game::InitChineseFont() {
     const char* text = "分数生命暂停继续重新开始游戏结束胜利排行榜第名按P暂停按R重新开始时间倍率落地惩罚恭喜进入空格发射等待";
     int codepointCount = 0;
@@ -110,26 +109,30 @@ void Game::InitChineseFont() {
     }
     UnloadCodepoints(codepoints);
 }
-
 void Game::DrawChineseText(const char* text, int x, int y, int fontSize, Color color) { 
     Vector2 pos = { (float)x, (float)y }; 
     DrawTextEx(chineseFont, text, pos, (float)fontSize, 2, color); 
 }
-
 void Game::DrawChineseTextCentered(const char* text, int y, int fontSize, Color color) { 
     Vector2 size = MeasureTextEx(chineseFont, text, (float)fontSize, 2); 
     DrawChineseText(text, (screenWidth - (int)size.x) / 2, y, fontSize, color); 
 }
-
 int Game::CalculateScore(int baseScore) {
     float multiplier = 5.0f - gameTime * timeMultiplierDecay;
     if (multiplier < 1.0f) multiplier = 1.0f;
     return (int)(baseScore * multiplier);
 }
-
 void Game::ResetGame() {
     // 重置游戏状态
-    ball.ResetToPaddle(paddle.GetRect().x + paddle.GetRect().width / 2, paddle.GetRect().y);
+    balls.clear();
+    Ball newBall({(float)screenWidth/2, (float)screenHeight - 70}, {0.0f, 0.0f}, ballRadius);
+    balls.push_back(newBall);
+    
+    // 清空道具和粒子
+    powerUps.clear();
+    particles.clear();
+    slowEffectTime = 0.0f;
+    
     score = 0; 
     lives = initialLives; 
     gameTime = 0.0f;
@@ -147,7 +150,6 @@ void Game::ResetGame() {
     
     currentState = GameState::PLAYING;
 }
-
 void Game::LoadConfig(const std::string& path) {
     try {
         std::ifstream f(path);
@@ -195,12 +197,35 @@ void Game::LoadConfig(const std::string& path) {
             timeMultiplierDecay = config["game"]["timeMultiplierDecay"];
         }
         
+        // 读取道具的配置！
+        if (config.contains("powerups")) {
+            auto& pu = config["powerups"];
+            if (pu.contains("paddle_extend")) {
+                auto& p = pu["paddle_extend"];
+                powerup_config[(int)PowerUpType::PADDLE_EXTEND].extra_width = p["extra_width"];
+                powerup_config[(int)PowerUpType::PADDLE_EXTEND].duration = p["duration"];
+                powerup_config[(int)PowerUpType::PADDLE_EXTEND].drop_rate = p["drop_rate"];
+            }
+            if (pu.contains("multi_ball")) {
+                auto& p = pu["multi_ball"];
+                powerup_config[(int)PowerUpType::MULTI_BALL].extra_balls = p["extra_balls"];
+                powerup_config[(int)PowerUpType::MULTI_BALL].duration = p["duration"];
+                powerup_config[(int)PowerUpType::MULTI_BALL].drop_rate = p["drop_rate"];
+            }
+            if (pu.contains("slow_ball")) {
+                auto& p = pu["slow_ball"];
+                powerup_config[(int)PowerUpType::SLOW_BALL].speed_factor = p["speed_factor"];
+                powerup_config[(int)PowerUpType::SLOW_BALL].duration = p["duration"];
+                powerup_config[(int)PowerUpType::SLOW_BALL].drop_rate = p["drop_rate"];
+                slowSpeedFactor = p["speed_factor"];
+            }
+        }
+        
         printf("配置文件加载成功！\n");
     } catch (std::exception& e) {
         printf("配置文件解析失败：%s，使用默认参数\n", e.what());
     }
 }
-
 void Game::Init() {
     // 初始化字体
     InitChineseFont();
@@ -209,7 +234,9 @@ void Game::Init() {
     LoadConfig("../config.json");
     
     // 重新初始化对象，用配置的参数
-    ball = Ball({(float)screenWidth/2, (float)screenHeight - 70}, {0.0f, 0.0f}, ballRadius);
+    balls.clear();
+    Ball newBall({(float)screenWidth/2, (float)screenHeight - 70}, {0.0f, 0.0f}, ballRadius);
+    balls.push_back(newBall);
     paddle = Paddle((screenWidth - paddleWidth)/2, screenHeight - 50, paddleWidth, paddleHeight);
     
     // 初始化游戏
@@ -217,8 +244,8 @@ void Game::Init() {
     
     SetTargetFPS(60);
 }
-
 void Game::Update() {
+    float dt = GetFrameTime();
     // 处理全局按键
     if (IsKeyPressed(KEY_R)) {
         // 按R重置游戏，不管什么状态
@@ -235,7 +262,6 @@ void Game::Update() {
         }
         return;
     }
-
     // 根据不同状态处理不同的逻辑
     switch(currentState) {
         case GameState::MENU:
@@ -254,33 +280,121 @@ void Game::Update() {
                 return;
             }
             
+            // 更新Paddle的效果时间
+            paddle.Update(dt);
+            // 更新减速效果的时间
+            if (slowEffectTime > 0) {
+                slowEffectTime -= dt;
+            }
+            
             // 处理输入
             float currentSpeed = (IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT)) ? paddleBoostSpeed : paddleSpeed;
             if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)) paddle.MoveLeft(currentSpeed);
             if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) paddle.MoveRight(currentSpeed);
             
-            // 球的逻辑
-            if (!ball.IsLaunched()) {
-                ball.ResetToPaddle(paddle.GetRect().x + paddle.GetRect().width / 2, paddle.GetRect().y);
-                if (IsKeyPressed(KEY_SPACE)) ball.Launch(paddle.GetRect().x + paddle.GetRect().width / 2, paddle.GetRect().width);
-            }
-            
-            if (ball.IsLaunched()) gameTime += GetFrameTime();
-            
-            ball.ApplyGravity(); 
-            ball.Move(); 
-            ball.BounceEdge(screenWidth, screenHeight); 
-            ball.BouncePaddle(paddle.GetRect());
-            
-            // 砖块碰撞
-            for (auto& brick : bricks) {
-                if (brick.IsActive() && ball.CheckBrickCollision(brick.GetRect())) {
-                    brick.SetActive(false); 
-                    score += CalculateScore(scorePerBrick); 
-                    winCount--; 
-                    break;
+            // 球的逻辑，现在处理所有的球！
+            bool hasActiveBall = false;
+            for (auto& ball : balls) {
+                if (!ball.IsLaunched()) {
+                    ball.ResetToPaddle(paddle.GetRect().x + paddle.GetRect().width / 2, paddle.GetRect().y);
+                    if (IsKeyPressed(KEY_SPACE)) ball.Launch(paddle.GetRect().x + paddle.GetRect().width / 2, paddle.GetRect().width);
+                }
+                
+                if (ball.IsLaunched()) {
+                    hasActiveBall = true;
+                    gameTime += dt;
+                    
+                    ball.ApplyGravity(); 
+                    // 如果有减速效果，就传减速因子，否则默认1.0
+                    if (slowEffectTime > 0) {
+                        ball.Move(slowSpeedFactor);
+                    } else {
+                        ball.Move();
+                    }
+                    ball.BounceEdge(screenWidth, screenHeight); 
+                    ball.BouncePaddle(paddle.GetRect());
+                    
+                    // 砖块碰撞
+                    for (auto& brick : bricks) {
+                        if (brick.IsActive() && ball.CheckBrickCollision(brick.GetRect())) {
+                            // 砖块被击中，生成粒子特效！
+                            Rectangle brickRect = brick.GetRect();
+                            Color brickColor = brick.GetColor();
+                            for (int i = 0; i < 10; i++) {
+                                Particle p;
+                                p.pos = { 
+                                    brickRect.x + (rand() % (int)brickRect.width), 
+                                    brickRect.y + (rand() % (int)brickRect.height) 
+                                };
+                                p.vel = { 
+                                    (rand()%100 - 50) / 10.0f, 
+                                    (rand()%100 - 50) / 10.0f 
+                                };
+                                p.color = brickColor;
+                                p.life = 0.5f;
+                                p.maxLife = 0.5f;
+                                particles.push_back(p);
+                            }
+                            
+                            brick.SetActive(false); 
+                            score += CalculateScore(scorePerBrick); 
+                            winCount--; 
+                            
+                            // 随机生成道具！
+                            float totalDropRate = 0.3f; // 30%概率掉道具
+                            if (rand() % 100 < totalDropRate * 100) {
+                                // 随机选一个道具类型
+                                PowerUpType type = static_cast<PowerUpType>(rand() % 3);
+                                powerUps.emplace_back(brick.GetRect().x, brick.GetRect().y, type);
+                            }
+                            break;
+                        }
+                    }
                 }
             }
+            
+            // 更新道具
+            std::vector<PowerUp> newPowerUps;
+            for (auto& powerup : powerUps) {
+                powerup.Update(dt);
+                // 掉出屏幕，移除
+                if (powerup.position.y > screenHeight) {
+                    continue;
+                }
+                // 碰撞到板，激活效果
+                if (CheckCollisionRecs(powerup.GetRect(), paddle.GetRect())) {
+                    // 用工厂模式创建效果并应用
+                    auto& cfg = powerup_config[(int)powerup.type];
+                    auto effect = CreatePowerUp(powerup.type, cfg.extra_width, cfg.extra_balls, cfg.speed_factor, cfg.duration);
+                    if (effect) {
+                        effect->Apply(*this);
+                    }
+                    continue;
+                }
+                newPowerUps.push_back(powerup);
+            }
+            powerUps.swap(newPowerUps);
+            
+            // 更新粒子
+            std::vector<Particle> newParticles;
+            for (auto& p : particles) {
+                p.pos.x += p.vel.x;
+                p.pos.y += p.vel.y;
+                p.life -= dt;
+                if (p.life > 0) {
+                    newParticles.push_back(p);
+                }
+            }
+            particles.swap(newParticles);
+            
+            // 移除掉出屏幕的球
+            std::vector<Ball> newBalls;
+            for (auto& ball : balls) {
+                if (ball.GetPosition().y <= screenHeight + 50) {
+                    newBalls.push_back(ball);
+                }
+            }
+            balls.swap(newBalls);
             
             // 胜利检测
             if (winCount <= 0) { 
@@ -288,8 +402,8 @@ void Game::Update() {
                 if (leaderboard.CanEnter(score)) playerRank = leaderboard.AddScore("Player", score); 
             }
             
-            // 掉出屏幕，生命减少
-            if (ball.GetPosition().y > screenHeight + 50) {
+            // 所有球都掉出屏幕了，才减生命
+            if (balls.empty()) {
                 lives--; 
                 score -= 50; 
                 if (score < 0) score = 0;
@@ -297,7 +411,11 @@ void Game::Update() {
                     currentState = GameState::GAMEOVER; 
                     if (leaderboard.CanEnter(score)) playerRank = leaderboard.AddScore("Player", score); 
                 }
-                else ball.ResetToPaddle(paddle.GetRect().x + paddle.GetRect().width / 2, paddle.GetRect().y);
+                else {
+                    // 重置，回到一个球
+                    Ball newBall({(float)screenWidth/2, (float)screenHeight - 70}, {0.0f, 0.0f}, ballRadius);
+                    balls.push_back(newBall);
+                }
             }
         }
             break;
@@ -319,7 +437,6 @@ void Game::Update() {
             break;
     }
 }
-
 void Game::Draw() {
     BeginDrawing();
     ClearBackground(Color{30, 30, 40, 255});
@@ -328,7 +445,6 @@ void Game::Draw() {
     DrawRectangle(0, 0, 5, screenHeight, GRAY); 
     DrawRectangle(screenWidth - 5, 0, 5, screenHeight, GRAY); 
     DrawRectangle(0, 0, screenWidth, 5, GRAY);
-
     // 根据状态绘制不同的内容
     switch(currentState) {
         case GameState::MENU:
@@ -341,10 +457,19 @@ void Game::Draw() {
         case GameState::PLAYING:
         case GameState::PAUSED:
         {
+            // 先绘制粒子，在最底层
+            for (auto& p : particles) {
+                float alpha = p.life / p.maxLife;
+                DrawCircleV(p.pos, 3, Fade(p.color, alpha));
+            }
+            
             // 游戏中或者暂停，先绘制游戏元素
             for (auto& brick : bricks) brick.Draw();
             paddle.Draw(); 
-            ball.Draw();
+            // 绘制所有的球
+            for (auto& ball : balls) ball.Draw();
+            // 绘制道具
+            for (auto& powerup : powerUps) powerup.Draw();
             
             // 绘制UI
             DrawChineseText("分数:", 20, 8, 24, WHITE); 
@@ -357,7 +482,28 @@ void Game::Draw() {
             if (currentMultiplier < 1.0f) currentMultiplier = 1.0f;
             DrawText(TextFormat("x%.1f", currentMultiplier), 140, 37, 20, currentMultiplier > 2.0f ? GREEN : Fade(WHITE, 0.5f));
             
-            if (!ball.IsLaunched()) DrawChineseTextCentered("按空格发射", 55, 20, YELLOW);
+            // 显示当前激活的效果
+            int effectY = 55;
+            if (paddle.GetRect().width > paddle.GetOriginalWidth()) {
+                DrawText("加长板生效中!", 20, effectY, 16, YELLOW);
+                effectY += 20;
+            }
+            if (slowEffectTime > 0) {
+                DrawText("减速生效中!", 20, effectY, 16, BLUE);
+                effectY += 20;
+            }
+            if (balls.size() > 1) {
+                DrawText(TextFormat("多球: %d个", (int)balls.size()), 20, effectY, 16, GREEN);
+            }
+            
+            bool hasUnlaunched = false;
+            for (auto& ball : balls) {
+                if (!ball.IsLaunched()) {
+                    hasUnlaunched = true;
+                    break;
+                }
+            }
+            if (hasUnlaunched) DrawChineseTextCentered("按空格发射", 55, 20, YELLOW);
             DrawChineseText("P-暂停 R-重开 L-排行", 280, 12, 18, Fade(WHITE, 0.6f));
             
             if (IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT)) DrawText(">>> BOOST <<<", 350, 575, 18, YELLOW);
@@ -376,7 +522,7 @@ void Game::Draw() {
             // 游戏结束或者胜利
             for (auto& brick : bricks) brick.Draw();
             paddle.Draw(); 
-            ball.Draw();
+            for (auto& ball : balls) ball.Draw();
             
             DrawRectangle(0, 0, screenWidth, screenHeight, Fade(BLACK, 0.85f));
             if (currentState == GameState::VICTORY) { 
@@ -421,10 +567,8 @@ void Game::Draw() {
             DrawChineseTextCentered("按 L 关闭排行榜", screenHeight - 50, 20, Fade(WHITE, 0.5f));
             break;
     }
-
     EndDrawing();
 }
-
 void Game::Shutdown() {
     // 释放资源
     UnloadFont(chineseFont);
