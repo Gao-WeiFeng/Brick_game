@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
-
 Ball::Ball(Vector2 pos, Vector2 sp, float r) {
     position = pos;
     speed = sp;
@@ -20,13 +19,12 @@ Ball::Ball(Vector2 pos, Vector2 sp, float r) {
         seeded = true;
     }
 }
-
-void Ball::Move() {
+// 实现带减速因子的移动，默认是1.0，和原来完全一样
+void Ball::Move(float speedFactor) {
     if (!launched) return;
-    position.x += speed.x;
-    position.y += speed.y;
+    position.x += speed.x * speedFactor;
+    position.y += speed.y * speedFactor;
 }
-
 void Ball::Draw() {
     DrawCircleGradient((int)position.x, (int)position.y, radius + 3, Fade(ORANGE, 0.3f), RED);
     DrawCircleV(position, radius, RED);
@@ -40,7 +38,6 @@ void Ball::Draw() {
         }
     }
 }
-
 void Ball::Launch(float paddleX, float paddleWidth) {
     if (launched) return;
     
@@ -58,23 +55,19 @@ void Ball::Launch(float paddleX, float paddleWidth) {
     position.x = paddleX;
     position.y = 550 - radius - 5;
 }
-
 void Ball::ResetToPaddle(float paddleX, float paddleY) {
     position.x = paddleX;
     position.y = paddleY - radius - 5;
     speed = {0, 0};
     launched = false;
 }
-
 void Ball::Reset(Vector2 pos, Vector2 sp) {
     position = pos;
     speed = sp;
 }
-
 void Ball::AddBounceForce(float force) {
     speed.y -= force;
 }
-
 void Ball::ApplyGravity() {
     if (!launched) return;
     speed.y += gravity;
@@ -85,7 +78,6 @@ void Ball::ApplyGravity() {
         speed.y = (speed.y / currentSpeed) * maxSpeed;
     }
 }
-
 void Ball::BounceEdge(int screenWidth, int screenHeight) {
     if (!launched) return;
     
@@ -103,7 +95,6 @@ void Ball::BounceEdge(int screenWidth, int screenHeight) {
         speed.y += bounceForce;
     }
 }
-
 void Ball::BouncePaddle(Rectangle paddleRect) {
     if (!launched) return;
     if (speed.y <= 0) return;
@@ -127,7 +118,6 @@ void Ball::BouncePaddle(Rectangle paddleRect) {
         position.y = paddleRect.y - radius;
     }
 }
-
 bool Ball::CheckBrickCollision(Rectangle brickRect) {
     if (!launched) return false;
     
